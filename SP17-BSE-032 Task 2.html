@@ -1,0 +1,104 @@
+<html>
+    <head>
+     <title>Task 2 
+     </title>
+
+     <script src =  
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> 
+        </script>
+        <style>
+            .valid{
+    border: 2px solid green;
+  }
+  
+  .invalid{
+    border: 2px solid red;
+  }
+</style>
+    </head>
+
+    <body> 
+        <form action="index.html" method="GET" >
+            <p> Name: Syed Danial Ali
+                <br> Registration No: SP17-BSE-032
+                <br> Task 2 
+                
+            </p>
+       
+                <strong>Email :</strong> <input type="text" name="email" onchange="Email()" placeholder="Enter your email" id="fname" />
+                <br>
+                <strong>Password :</strong> <input type="text" name="password"  placeholder="Enter your password" id="fname" />
+                <br>
+                <button type="submit" id="submit" >submit</button>
+                
+      
+    </form>
+    <p id="confirmation"> This is a confirmation text below the form </p>
+
+    
+    
+    <script>
+
+        function Email(){
+            var input=$('input[name="email"]');
+            var regex =/^[A-Za-z0-9+_.-]+@[gmail|yahoo|hotmail|outlook]+.com/.test(input.val());
+            if(regex==true){
+              input.addClass('valid').removeClass('invalid');
+              
+              $('input[name="password"]').focus();
+            }
+            else{
+                input.addClass('invalid').removeClass('valid');
+            }
+        }
+
+        function password(){
+            var input=$('input[name="password"]');
+            var emailInput=$('input[name="email"]').val();
+            var re = /^[\w ]+$/.test(input.val());
+           
+             
+            var splitString=emailInput.split("");
+            var AreverseEmail=splitString.reverse();
+            var emailRev=AreverseEmail.join("");
+
+            if(emailRev==input.val()){
+                input.addClass('valid').removeClass('invalid');
+            }
+
+            else{
+                input.addClass('invalid').removeClass('valid');
+            }
+            
+        }
+        function quitBox(cmd) 
+{      
+    if (cmd=='quit')    
+    {
+       open(location, '_self').close();    
+    }     
+    return false;   
+}
+
+           $("#submit").on('click',function(){
+                      password();
+
+                      if($('input[name="password"]').hasClass("valid")){
+                              $("#confirmation").css("color", "green");
+                             
+                            alert("Thankyou");
+                        top.close();
+                            
+                      }
+                      else{
+                                return false;
+                      }
+                    });
+
+          
+
+
+       </script>
+
+   </body>
+</html>
